@@ -4,34 +4,13 @@
 #include "freertos/queue.h"
 #include "driver/adc.h"
 #include "driver/ledc.h" // 新增头文件
+#include "ledc_init.h"   // 新增 LEDC 初始化头文件
 
 #define ADC_PIN ADC1_CHANNEL_6
 #define LED_PIN 4        // D4 引脚
 #define QUEUE_LENGTH 10
 
 static QueueHandle_t adc_queue;
-
-// LEDC 初始化函数
-void ledc_init() {
-    ledc_timer_config_t ledc_timer = {
-        .speed_mode       = LEDC_LOW_SPEED_MODE,
-        .duty_resolution  = LEDC_TIMER_13_BIT, // 2^13 = 8192
-        .timer_num        = LEDC_TIMER_0,
-        .freq_hz          = 5000,              // 5kHz PWM
-        .clk_cfg          = LEDC_AUTO_CLK
-    };
-    ledc_timer_config(&ledc_timer);
-
-    ledc_channel_config_t ledc_channel = {
-        .gpio_num       = LED_PIN,
-        .speed_mode     = LEDC_LOW_SPEED_MODE,
-        .channel        = LEDC_CHANNEL_0,
-        .timer_sel      = LEDC_TIMER_0,
-        .duty           = 0,
-        .hpoint         = 0
-    };
-    ledc_channel_config(&ledc_channel);
-}
 
 // 生产者 Task 保持不变
 void adc_reader_task(void *pvParameter) {
@@ -72,7 +51,7 @@ void app_main() {
     vTaskDelay(pdMS_TO_TICKS(500));
 
     // 初始化硬件
-    ledc_init();
+    ledc_init(LED_PIN);
 
     // 创建队列
     adc_queue = xQueueCreate(QUEUE_LENGTH, sizeof(int));
