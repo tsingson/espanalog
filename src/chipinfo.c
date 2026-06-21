@@ -5,7 +5,7 @@
 #include "freertos/FreeRTOS.h"
 #include <stdio.h>
 
-const char *model_info(esp_chip_model_t model) {
+static const char *model_info(esp_chip_model_t model) {
   switch (model) {
   case CHIP_ESP32:
     return "ESP32";
