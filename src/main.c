@@ -118,15 +118,15 @@ void app_main() {
   // SSD1306
   init_ssd1306();
 
-  ssd1306_print_str(0, 0, "LED controler", false);
-  ssd1306_print_str(0, 27, "SSD1306 OLED", false);
-  ssd1306_print_str(0, 37, "with ESP32", false);
-  ssd1306_print_str(0, 46, "ESP-IDF", false);
-  // ssd1306_print_str(0, 46, "Embedded C", false);
-
-  ssd1306_display();
-  vTaskDelay(3000 / portTICK_PERIOD_MS);
-  ssd1306_clean();
+  // ssd1306_print_str(0, 0, "LED controler", false);
+  // ssd1306_print_str(0, 27, "SSD1306 OLED", false);
+  // ssd1306_print_str(0, 37, "with ESP32", false);
+  // ssd1306_print_str(0, 46, "ESP-IDF", false);
+  // // ssd1306_print_str(0, 46, "Embedded C", false);
+  //
+  // ssd1306_display();
+  // vTaskDelay(3000 / portTICK_PERIOD_MS);
+  // ssd1306_clean();
 
   // 初始化硬件
   ledc_init(LED_PIN);
