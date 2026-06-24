@@ -1,46 +1,11 @@
+# SSD1306 driver for platformio / ESP-IDF
 
-This directory is intended for project specific (private) libraries.
-PlatformIO will compile them to static libraries and link into the executable file.
-
-The source code of each library should be placed in a separate directory
-("lib/your_library_name/[Code]").
-
-For example, see the structure of the following example libraries `Foo` and `Bar`:
-
-|--lib
-|  |
-|  |--Bar
-|  |  |--docs
-|  |  |--examples
-|  |  |--src
-|  |     |- Bar.c
-|  |     |- Bar.h
-|  |  |- library.json (optional. for custom build options, etc) https://docs.platformio.org/page/librarymanager/config.html
-|  |
-|  |--Foo
-|  |  |- Foo.c
-|  |  |- Foo.h
-|  |
-|  |- README --> THIS FILE
-|
-|- platformio.ini
-|--src
-   |- main.c
-
-Example contents of `src/main.c` using Foo and Bar:
+example code
 ```
-#include <Foo.h>
-#include <Bar.h>
-
-int main (void)
-{
-  ...
-}
+ ssd1306_clean();
+      ssd1306_print_str(0, 0, "LED change", false);
+      ssd1306_print_str(0, 27, "Mapped Value:", false);
+      ssd1306_print_str(0, 37, buffer, false);
+      ssd1306_display();
 
 ```
-
-The PlatformIO Library Dependency Finder will find automatically dependent
-libraries by scanning project source files.
-
-More information about PlatformIO Library Dependency Finder
-- https://docs.platformio.org/page/librarymanager/ldf.html
