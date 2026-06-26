@@ -17,7 +17,7 @@ QueueHandle_t oled_queue; // 电阻值变化, 发给 SSD1306 显示
 
 #define ADC_PIN ADC1_CHANNEL_6
 #define LED_PIN 4 // D4 引脚
-#define QUEUE_LENGTH 10
+#define ADC_QUEUE_LENGTH 10
 
 static QueueHandle_t adc_queue;
 
@@ -131,10 +131,11 @@ void app_main() {
   // 初始化硬件
   ledc_init(LED_PIN);
 
+
   print_chip_info();
 
   // 创建队列
-  adc_queue = xQueueCreate(QUEUE_LENGTH, sizeof(int));
+  adc_queue = xQueueCreate(ADC_QUEUE_LENGTH, sizeof(int));
   // 2. 创建队列 (长度为 5，每个元素是一个最多 20 字节的字符串)
   oled_queue = xQueueCreate(5, sizeof(char[20]));
 

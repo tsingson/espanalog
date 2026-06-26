@@ -80,9 +80,7 @@ void init_ssd1306(void) {
   vTaskDelay(500 / portTICK_PERIOD_MS);
   i2c_ssd1306_buffer_clear(&i2c_ssd1306);
 }
-void  ssd1306_clean(void) {
-  i2c_ssd1306_buffer_clear(&i2c_ssd1306);
-}
+void ssd1306_clean(void) { i2c_ssd1306_buffer_clear(&i2c_ssd1306); }
 
 esp_err_t ssd1306_print_str(uint8_t x, uint8_t y, const char *text,
                             bool invert) {

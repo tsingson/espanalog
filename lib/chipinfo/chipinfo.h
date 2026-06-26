@@ -7,4 +7,6 @@
 
 void print_chip_info();
 
+char *get_chip_info_string_heap(void);
+
 #endif // LED_BRIGHTNESS_CONTROL_CHIPINFO_H
